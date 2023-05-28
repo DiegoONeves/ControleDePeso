@@ -1,0 +1,239 @@
+﻿@model ControleDePeso.Models.DashBoardViewModel
+
+@{
+    ViewData["Title"] = "Dashboard";
+}
+
+<h1>Dashboard da Saúde</h1>
+
+<hr />
+
+<br />
+<table class="table table-bordered table-hover">
+    <thead class="text-center">
+        <tr>
+            <th colspan="2">
+                Média Móvel (Semanal)
+            </th>
+        </tr>
+        <tr>
+            <th>
+                @Html.DisplayName("Referência")
+            </th>
+            <th>
+                @Html.DisplayName($"Peso")
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+               Última semana
+            </td>
+            <td>
+                @Model.Resultado.MediaMovelSemanal.MediaMovel1
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Segunda semana mais antiga
+            </td>
+            <td>
+                @Model.Resultado.MediaMovelSemanal.MediaMovel2
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Terceira semana mais antiga
+            </td>
+            <td>
+                @Model.Resultado.MediaMovelSemanal.MediaMovel3
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Quarta semana mais antiga
+            </td>
+            <td>
+                @Model.Resultado.MediaMovelSemanal.MediaMovel4
+            </td>
+        </tr>
+    </tbody>
+</table>
+<br />
+<table class="table table-bordered table-hover">
+    <thead class="text-center">
+        <tr>
+            <th colspan="2">
+                Média Móvel (Quinzenal)
+            </th>
+        </tr>
+        <tr>
+            <th>
+                @Html.DisplayName("Referência")
+            </th>
+            <th>
+                @Html.DisplayName($"Peso")
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+                Última quinzena
+            </td>
+            <td>
+                @Model.Resultado.MediaMovelQuinzenal.MediaMovel1
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Segunda quinzena mais antiga
+            </td>
+            <td>
+                @Model.Resultado.MediaMovelQuinzenal.MediaMovel2
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Trceira quinzena mais antiga
+            </td>
+            <td>
+                @Model.Resultado.MediaMovelQuinzenal.MediaMovel3
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Quarta quinzena mais antiga
+            </td>
+            <td>
+                @Model.Resultado.MediaMovelQuinzenal.MediaMovel4
+            </td>
+        </tr>
+    </tbody>
+</table>
+<br />
+<table class="table table-bordered table-hover">
+    <thead class="text-center">
+        <tr>
+            <th colspan="2">
+                Média Móvel (Trimestral)
+            </th>
+        </tr>
+        <tr>
+            <th>
+                @Html.DisplayName("Referência")
+            </th>
+            <th>
+                @Html.DisplayName($"Peso")
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+                Último trimestre
+            </td>
+            <td>
+                @Model.Resultado.MediaMovelTrimestral.MediaMovel1
+            </td>
+        </tr>
+        <tr>
+            <td>
+               Segundo trimestre mais antigo
+            </td>
+            <td>
+                @Model.Resultado.MediaMovelTrimestral.MediaMovel2
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Terceiro trimestre mais antigo
+            </td>
+            <td>
+                @Model.Resultado.MediaMovelTrimestral.MediaMovel3
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Quarto trimestre mais antigo
+            </td>
+            <td>
+                @Model.Resultado.MediaMovelTrimestral.MediaMovel4
+            </td>
+        </tr>
+    </tbody>
+</table>
+<br />
+<table class="table table-bordered table-hover">
+    <thead class="text-center">
+        <tr>
+            <th colspan="2">
+                Média dos últimos meses
+            </th>
+        </tr>
+        <tr>
+            <th>
+                @Html.DisplayName("Mês/Ano")
+            </th>
+            <th>
+                @Html.DisplayName($"Média de Peso")
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Resultado.UltimosMeses)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Referencia)
+                </td>
+                <td scope="row">
+                    @Html.DisplayFor(modelItem => item.MediaDePeso)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<br />
+
+<table class="table table-bordered table-hover">
+    <thead class="text-center">
+        <tr>
+            <th colspan="2">
+                Média de Peso Anual Histórica
+            </th>
+        </tr>
+        <tr>
+            <th>
+                @Html.DisplayName("Referência")
+            </th>
+            <th>
+                @Html.DisplayName($"Média de Peso")
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Resultado.PesoHistorico)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Ano)
+                </td>
+                <td scope="row">
+                    @Html.DisplayFor(modelItem => item.Peso)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+
+}
