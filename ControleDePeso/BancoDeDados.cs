@@ -1,4 +1,5 @@
-﻿using ControleDePeso.Models;
+﻿using ControleDePeso.Entidades;
+using ControleDePeso.Models;
 using Dapper;
 using System.Data.SqlClient;
 
@@ -30,7 +31,7 @@ namespace ControleDePeso
                 using (var conn = new SqlConnection(ConnectionString))
                 {
                     var temp = await conn.QueryAsync<PesoHistoricoDashBoardViewModel>(@"
-                                            SELECT AVG(Peso) AS Peso FROM ControleDePeso WHERE YEAR(DataDoRegistro) = @Ano",
+                                            SELECT AVG(Peso) AS Peso FROM PesoHistorico WHERE YEAR(DataDoRegistro) = @Ano",
                                             new { @Ano = ano });
 
                     var primeiro = temp.First();
@@ -75,16 +76,16 @@ namespace ControleDePeso
             using (var conn = new SqlConnection(ConnectionString))
             {
                 //ÚLTIMOS 7 DIAS - PESO
-                r.MediaMovel1 = await conn.ExecuteScalarAsync<string>(@"SELECT CAST(CAST(AVG(Peso) as DECIMAL(18,1)) as VARCHAR(255)) + ' Kg' FROM ControleDePeso WHERE DataDoRegistro BETWEEN @DataInicial AND @DataFinal", new { @DataInicial = datasPrimeiroPeriodo[1], @DataFinal = datasPrimeiroPeriodo[0] });
+                r.MediaMovel1 = await conn.ExecuteScalarAsync<string>(@"SELECT CAST(CAST(AVG(Peso) as DECIMAL(18,1)) as VARCHAR(255)) + ' Kg' FROM PesoHistorico WHERE DataDoRegistro BETWEEN @DataInicial AND @DataFinal", new { @DataInicial = datasPrimeiroPeriodo[1], @DataFinal = datasPrimeiroPeriodo[0] });
 
                 //ÚLTIMOS 14 DIAS - PESO
-                r.MediaMovel2 = await conn.ExecuteScalarAsync<string>(@"SELECT CAST(CAST(AVG(Peso) as DECIMAL(18,1)) as VARCHAR(255)) + ' Kg' FROM ControleDePeso WHERE DataDoRegistro BETWEEN @DataInicial AND @DataFinal", new { @DataInicial = datasSegundoPeriodo[1], @DataFinal = datasSegundoPeriodo[0] });
+                r.MediaMovel2 = await conn.ExecuteScalarAsync<string>(@"SELECT CAST(CAST(AVG(Peso) as DECIMAL(18,1)) as VARCHAR(255)) + ' Kg' FROM PesoHistorico WHERE DataDoRegistro BETWEEN @DataInicial AND @DataFinal", new { @DataInicial = datasSegundoPeriodo[1], @DataFinal = datasSegundoPeriodo[0] });
 
                 //ÚLTIMOS 21 DIAS - PESO
-                r.MediaMovel3 = await conn.ExecuteScalarAsync<string>(@"SELECT CAST(CAST(AVG(Peso) as DECIMAL(18,1)) as VARCHAR(255)) + ' Kg' FROM ControleDePeso WHERE DataDoRegistro BETWEEN @DataInicial AND @DataFinal", new { @DataInicial = datasTerceiroPeriodo[1], @DataFinal = datasTerceiroPeriodo[0] });
+                r.MediaMovel3 = await conn.ExecuteScalarAsync<string>(@"SELECT CAST(CAST(AVG(Peso) as DECIMAL(18,1)) as VARCHAR(255)) + ' Kg' FROM PesoHistorico WHERE DataDoRegistro BETWEEN @DataInicial AND @DataFinal", new { @DataInicial = datasTerceiroPeriodo[1], @DataFinal = datasTerceiroPeriodo[0] });
 
                 //ÚLTIMOS 28 DIAS - PESO
-                r.MediaMovel4 = await conn.ExecuteScalarAsync<string>(@"SELECT CAST(CAST(AVG(Peso) as DECIMAL(18,1)) as VARCHAR(255)) + ' Kg' FROM ControleDePeso WHERE DataDoRegistro BETWEEN @DataInicial AND @DataFinal", new { @DataInicial = datasQuartoPeriodo[1], @DataFinal = datasQuartoPeriodo[0] });
+                r.MediaMovel4 = await conn.ExecuteScalarAsync<string>(@"SELECT CAST(CAST(AVG(Peso) as DECIMAL(18,1)) as VARCHAR(255)) + ' Kg' FROM PesoHistorico WHERE DataDoRegistro BETWEEN @DataInicial AND @DataFinal", new { @DataInicial = datasQuartoPeriodo[1], @DataFinal = datasQuartoPeriodo[0] });
 
             }
 
@@ -123,13 +124,13 @@ namespace ControleDePeso
 
             using (var conn = new SqlConnection(ConnectionString))
             {
-                r.MediaMovel1 = await conn.ExecuteScalarAsync<string>(@"SELECT CAST(CAST(AVG(Peso) as DECIMAL(18,1)) as VARCHAR(255)) + ' Kg' FROM ControleDePeso WHERE DataDoRegistro BETWEEN @DataInicial AND @DataFinal", new { @DataInicial = datasPrimeiroPeriodo[1], @DataFinal = datasPrimeiroPeriodo[0] });
+                r.MediaMovel1 = await conn.ExecuteScalarAsync<string>(@"SELECT CAST(CAST(AVG(Peso) as DECIMAL(18,1)) as VARCHAR(255)) + ' Kg' FROM PesoHistorico WHERE DataDoRegistro BETWEEN @DataInicial AND @DataFinal", new { @DataInicial = datasPrimeiroPeriodo[1], @DataFinal = datasPrimeiroPeriodo[0] });
 
-                r.MediaMovel2 = await conn.ExecuteScalarAsync<string>(@"SELECT CAST(CAST(AVG(Peso) as DECIMAL(18,1)) as VARCHAR(255)) + ' Kg' FROM ControleDePeso WHERE DataDoRegistro BETWEEN @DataInicial AND @DataFinal", new { @DataInicial = datasSegundoPeriodo[1], @DataFinal = datasSegundoPeriodo[0] });
+                r.MediaMovel2 = await conn.ExecuteScalarAsync<string>(@"SELECT CAST(CAST(AVG(Peso) as DECIMAL(18,1)) as VARCHAR(255)) + ' Kg' FROM PesoHistorico WHERE DataDoRegistro BETWEEN @DataInicial AND @DataFinal", new { @DataInicial = datasSegundoPeriodo[1], @DataFinal = datasSegundoPeriodo[0] });
 
-                r.MediaMovel3 = await conn.ExecuteScalarAsync<string>(@"SELECT CAST(CAST(AVG(Peso) as DECIMAL(18,1)) as VARCHAR(255)) + ' Kg' FROM ControleDePeso WHERE DataDoRegistro BETWEEN @DataInicial AND @DataFinal", new { @DataInicial = datasTerceiroPeriodo[1], @DataFinal = datasTerceiroPeriodo[0] });
+                r.MediaMovel3 = await conn.ExecuteScalarAsync<string>(@"SELECT CAST(CAST(AVG(Peso) as DECIMAL(18,1)) as VARCHAR(255)) + ' Kg' FROM PesoHistorico WHERE DataDoRegistro BETWEEN @DataInicial AND @DataFinal", new { @DataInicial = datasTerceiroPeriodo[1], @DataFinal = datasTerceiroPeriodo[0] });
 
-                r.MediaMovel4 = await conn.ExecuteScalarAsync<string>(@"SELECT CAST(CAST(AVG(Peso) as DECIMAL(18,1)) as VARCHAR(255)) + ' Kg' FROM ControleDePeso WHERE DataDoRegistro BETWEEN @DataInicial AND @DataFinal", new { @DataInicial = datasQuartoPeriodo[1], @DataFinal = datasQuartoPeriodo[0] });
+                r.MediaMovel4 = await conn.ExecuteScalarAsync<string>(@"SELECT CAST(CAST(AVG(Peso) as DECIMAL(18,1)) as VARCHAR(255)) + ' Kg' FROM PesoHistorico WHERE DataDoRegistro BETWEEN @DataInicial AND @DataFinal", new { @DataInicial = datasQuartoPeriodo[1], @DataFinal = datasQuartoPeriodo[0] });
 
             }
 
@@ -164,13 +165,13 @@ namespace ControleDePeso
 
             using (var conn = new SqlConnection(ConnectionString))
             {
-                r.MediaMovel1 = await conn.ExecuteScalarAsync<string>(@"SELECT CAST(CAST(AVG(Peso) as DECIMAL(18,1)) as VARCHAR(255)) + ' Kg' FROM ControleDePeso WHERE DataDoRegistro BETWEEN @DataInicial AND @DataFinal", new { @DataInicial = datasPrimeiroPeriodo[1], @DataFinal = datasPrimeiroPeriodo[0] });
+                r.MediaMovel1 = await conn.ExecuteScalarAsync<string>(@"SELECT CAST(CAST(AVG(Peso) as DECIMAL(18,1)) as VARCHAR(255)) + ' Kg' FROM PesoHistorico WHERE DataDoRegistro BETWEEN @DataInicial AND @DataFinal", new { @DataInicial = datasPrimeiroPeriodo[1], @DataFinal = datasPrimeiroPeriodo[0] });
 
-                r.MediaMovel2 = await conn.ExecuteScalarAsync<string>(@"SELECT CAST(CAST(AVG(Peso) as DECIMAL(18,1)) as VARCHAR(255)) + ' Kg' FROM ControleDePeso WHERE DataDoRegistro BETWEEN @DataInicial AND @DataFinal", new { @DataInicial = datasSegundoPeriodo[1], @DataFinal = datasSegundoPeriodo[0] });
+                r.MediaMovel2 = await conn.ExecuteScalarAsync<string>(@"SELECT CAST(CAST(AVG(Peso) as DECIMAL(18,1)) as VARCHAR(255)) + ' Kg' FROM PesoHistorico WHERE DataDoRegistro BETWEEN @DataInicial AND @DataFinal", new { @DataInicial = datasSegundoPeriodo[1], @DataFinal = datasSegundoPeriodo[0] });
 
-                r.MediaMovel3 = await conn.ExecuteScalarAsync<string>(@"SELECT CAST(CAST(AVG(Peso) as DECIMAL(18,1)) as VARCHAR(255)) + ' Kg' FROM ControleDePeso WHERE DataDoRegistro BETWEEN @DataInicial AND @DataFinal", new { @DataInicial = datasTerceiroPeriodo[1], @DataFinal = datasTerceiroPeriodo[0] });
+                r.MediaMovel3 = await conn.ExecuteScalarAsync<string>(@"SELECT CAST(CAST(AVG(Peso) as DECIMAL(18,1)) as VARCHAR(255)) + ' Kg' FROM PesoHistorico WHERE DataDoRegistro BETWEEN @DataInicial AND @DataFinal", new { @DataInicial = datasTerceiroPeriodo[1], @DataFinal = datasTerceiroPeriodo[0] });
 
-                r.MediaMovel4 = await conn.ExecuteScalarAsync<string>(@"SELECT CAST(CAST(AVG(Peso) as DECIMAL(18,1)) as VARCHAR(255)) + ' Kg' FROM ControleDePeso WHERE DataDoRegistro BETWEEN @DataInicial AND @DataFinal", new { @DataInicial = datasQuartoPeriodo[1], @DataFinal = datasQuartoPeriodo[0] });
+                r.MediaMovel4 = await conn.ExecuteScalarAsync<string>(@"SELECT CAST(CAST(AVG(Peso) as DECIMAL(18,1)) as VARCHAR(255)) + ' Kg' FROM PesoHistorico WHERE DataDoRegistro BETWEEN @DataInicial AND @DataFinal", new { @DataInicial = datasQuartoPeriodo[1], @DataFinal = datasQuartoPeriodo[0] });
             }
 
             return r;
@@ -198,14 +199,20 @@ namespace ControleDePeso
                 using (var conn = new SqlConnection(ConnectionString))
                 {
                     //PESO
-                    h.MediaDePeso = await conn.ExecuteScalarAsync<string>(@"SELECT CAST(CAST(AVG(Peso) as DECIMAL(18,1)) as VARCHAR(255)) + ' Kg' FROM ControleDePeso WHERE YEAR(DataDoRegistro) = @Ano AND MONTH(DataDoRegistro) = @Mes;", new { @Mes = m.Month, @Ano = m.Year });
+                    h.MediaDePeso = await conn.ExecuteScalarAsync<string>(@"SELECT CAST(CAST(AVG(Peso) as DECIMAL(18,1)) as VARCHAR(255)) + ' Kg' FROM PesoHistorico WHERE YEAR(DataDoRegistro) = @Ano AND MONTH(DataDoRegistro) = @Mes;", new { @Mes = m.Month, @Ano = m.Year });
                     r.Add(h);
                 }
             }
 
             return r.OrderByDescending(x => x.ReferenciaDateTime).ToList();
 
+        }
 
+        public async Task CadastrarPeso(PesagemViewModel model)
+        {
+            var peso = new PesoHistorico { DataDoRegistro = model.DataDoRegistro.ToDateTime(TimeOnly.MinValue), Peso = model.Peso };
+            using var conn = new SqlConnection(ConnectionString);
+            await conn.ExecuteAsync(@"insert into PesoHistorico (DataDoRegistro,Peso) values (@DataDoRegistro,@Peso)", peso);
         }
 
         private string ObterNomeMes(int mes)
