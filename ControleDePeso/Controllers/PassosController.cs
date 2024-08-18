@@ -3,27 +3,27 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace ControleDePeso.Controllers
 {
-    public class PesagemController : Controller
+    public class PassosController : Controller
     {
         private readonly BancoDeDados _bd;
-        public PesagemController(ILogger<PesagemController> logger, BancoDeDados bd)
+        public PassosController(ILogger<PassosController> logger, BancoDeDados bd)
         {
             _bd = bd;
             _logger = logger;
         }
-        private readonly ILogger<PesagemController> _logger;
-        public IActionResult Cadastrar()
+        private readonly ILogger<PassosController> _logger;
+        public IActionResult Gravar()
         {
-            return View(new PesagemViewModel
+            return View(new GravarPassosViewModel
             {
                 DataDoRegistro = DateOnly.Parse(DateTime.Now.ToShortDateString())
             });
         }
 
         [HttpPost]
-        public async Task<IActionResult> Cadastrar(PesagemViewModel model)
+        public async Task<IActionResult> Gravar(GravarPassosViewModel model)
         {
-            await _bd.CadastrarPesoAsync(model);
+            await _bd.GravarPassosAsync(model);
             return RedirectToAction("Index", "Home");
         }
     }

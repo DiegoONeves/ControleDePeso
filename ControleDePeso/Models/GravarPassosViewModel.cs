@@ -2,9 +2,9 @@
 
 namespace ControleDePeso.Models
 {
-    public class PesagemViewModel
+    public class GravarPassosViewModel
     {
-        public decimal Peso { get; set; }
+        public int Passos { get; set; }
         [Display(Name = "Data do registro")]
         public DateOnly DataDoRegistro { get; set; }
     }

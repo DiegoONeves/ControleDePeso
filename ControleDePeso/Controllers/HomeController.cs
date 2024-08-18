@@ -19,26 +19,26 @@ namespace ControleDePeso.Controllers
         {
             return new List<SelectListItem>
             {
-                new SelectListItem { Value ="1", Text =  "Janeiro" },
-                new SelectListItem { Value ="2",Text ="Fevereiro"},
-                new SelectListItem { Value ="3",Text ="Março"},
-                new SelectListItem { Value ="4",Text = "Abril"},
-                new SelectListItem { Value ="5",Text = "Maio"},
-                new SelectListItem { Value ="6",Text = "Junho"},
-                new SelectListItem { Value ="7",Text = "Julho"},
-                new SelectListItem { Value ="8",Text = "Agosto"},
-                new SelectListItem { Value ="9",Text = "Setembro"},
-                new SelectListItem { Value ="10",Text = "Outubro"},
-                new SelectListItem { Value ="11",Text = "Novembro"},
-                new SelectListItem { Value ="12",Text = "Dezembro"}
+                new() { Value ="1", Text =  "Janeiro" },
+                new() { Value ="2",Text ="Fevereiro"},
+                new() { Value ="3",Text ="Março"},
+                new() { Value ="4",Text = "Abril"},
+                new() { Value ="5",Text = "Maio"},
+                new() { Value ="6",Text = "Junho"},
+                new() { Value ="7",Text = "Julho"},
+                new() { Value ="8",Text = "Agosto"},
+                new() { Value ="9",Text = "Setembro"},
+                new() { Value ="10",Text = "Outubro"},
+                new() { Value ="11",Text = "Novembro"},
+                new() { Value ="12",Text = "Dezembro"}
             };
         }
 
         public async Task<IActionResult> Index()
         {
             var vm = new DashBoardViewModel();
-            var t1 = _bd.BuscarHistoricoPesoAsync(5);
-            var t2 = _bd.BuscarUltimosMesesAsync(4);
+            var t1 = _bd.BuscarHistoricoAsync(10);
+            var t2 = _bd.BuscarUltimosMesesAsync(7);
             var t3 = _bd.BuscarMediaMovelSemanalAsync();
             var t4 = _bd.BuscarMediaMovelTrimestralAsync();
             var t5 = _bd.BuscarMediaMovelQuinzenalAsync();

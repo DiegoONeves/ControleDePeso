@@ -6,8 +6,7 @@
         public decimal Peso { get; set; }
 
         public override string ToString()
-        {
-            return $"Data do Registro: {DataDoRegistro.ToShortDateString()} - Peso: {Peso}";
-        }
+            => $"Data do Registro: {DataDoRegistro.ToShortDateString()} - Peso: {Peso}";
+        
     }
 }

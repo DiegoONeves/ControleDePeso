@@ -6,17 +6,11 @@
 
 <h1>Dashboard da Saúde</h1>
 
-<br>
-<iframe width="600" height="400" src="https://us-east-1.quicksight.aws.amazon.com/sn/embed/share/accounts/437054333024/dashboards/dd2f2d37-39f7-4041-b326-1dbe288fd806/sheets/dd2f2d37-39f7-4041-b326-1dbe288fd806_ce9763ac-14ea-415f-8564-862daf6a18c9/visuals/dd2f2d37-39f7-4041-b326-1dbe288fd806_23dc5008-be9a-4bb0-b4e0-1490e48e015c?directory_alias=testefreetrial"></iframe>
-
-<hr />
-
-<br />
 <table class="table table-bordered table-hover">
     <thead class="text-center">
         <tr>
-            <th colspan="2">
-                Média Móvel (Semanal)
+            <th colspan="3">
+                Média móvel (semanal)
             </th>
         </tr>
         <tr>
@@ -25,6 +19,9 @@
             </th>
             <th>
                 @Html.DisplayName($"Peso")
+            </th>
+            <th>
+                @Html.DisplayName($"Passos")
             </th>
         </tr>
     </thead>
@@ -34,7 +31,10 @@
                Última semana
             </td>
             <td>
-                @Model.Resultado.MediaMovelSemanal.MediaMovel1
+                @Model.Resultado.MediaMovelSemanal.MediaMovelPeso1
+            </td>
+            <td>
+                @Model.Resultado.MediaMovelSemanal.MediaMovelPassos1
             </td>
         </tr>
         <tr>
@@ -42,7 +42,10 @@
                 Segunda semana mais antiga
             </td>
             <td>
-                @Model.Resultado.MediaMovelSemanal.MediaMovel2
+                @Model.Resultado.MediaMovelSemanal.MediaMovelPeso2
+            </td>
+            <td>
+                @Model.Resultado.MediaMovelSemanal.MediaMovelPassos2
             </td>
         </tr>
         <tr>
@@ -50,7 +53,10 @@
                 Terceira semana mais antiga
             </td>
             <td>
-                @Model.Resultado.MediaMovelSemanal.MediaMovel3
+                @Model.Resultado.MediaMovelSemanal.MediaMovelPeso3
+            </td>
+            <td>
+                @Model.Resultado.MediaMovelSemanal.MediaMovelPassos3
             </td>
         </tr>
         <tr>
@@ -58,7 +64,10 @@
                 Quarta semana mais antiga
             </td>
             <td>
-                @Model.Resultado.MediaMovelSemanal.MediaMovel4
+                @Model.Resultado.MediaMovelSemanal.MediaMovelPeso4
+            </td>
+            <td>
+                @Model.Resultado.MediaMovelSemanal.MediaMovelPassos4
             </td>
         </tr>
     </tbody>
@@ -67,8 +76,8 @@
 <table class="table table-bordered table-hover">
     <thead class="text-center">
         <tr>
-            <th colspan="2">
-                Média Móvel (Quinzenal)
+            <th colspan="3">
+                Média móvel (quinzenal)
             </th>
         </tr>
         <tr>
@@ -77,6 +86,9 @@
             </th>
             <th>
                 @Html.DisplayName($"Peso")
+            </th>
+            <th>
+                @Html.DisplayName($"Passos")
             </th>
         </tr>
     </thead>
@@ -86,7 +98,10 @@
                 Última quinzena
             </td>
             <td>
-                @Model.Resultado.MediaMovelQuinzenal.MediaMovel1
+                @Model.Resultado.MediaMovelQuinzenal.MediaMovelPeso1
+            </td>
+            <td>
+                @Model.Resultado.MediaMovelQuinzenal.MediaMovelPassos1
             </td>
         </tr>
         <tr>
@@ -94,7 +109,10 @@
                 Segunda quinzena mais antiga
             </td>
             <td>
-                @Model.Resultado.MediaMovelQuinzenal.MediaMovel2
+                @Model.Resultado.MediaMovelQuinzenal.MediaMovelPeso2
+            </td>
+            <td>
+                @Model.Resultado.MediaMovelQuinzenal.MediaMovelPassos2
             </td>
         </tr>
         <tr>
@@ -102,7 +120,10 @@
                 Terceira quinzena mais antiga
             </td>
             <td>
-                @Model.Resultado.MediaMovelQuinzenal.MediaMovel3
+                @Model.Resultado.MediaMovelQuinzenal.MediaMovelPeso3
+            </td>
+            <td>
+                @Model.Resultado.MediaMovelQuinzenal.MediaMovelPassos3
             </td>
         </tr>
         <tr>
@@ -110,7 +131,10 @@
                 Quarta quinzena mais antiga
             </td>
             <td>
-                @Model.Resultado.MediaMovelQuinzenal.MediaMovel4
+                @Model.Resultado.MediaMovelQuinzenal.MediaMovelPeso4
+            </td>
+            <td>
+                @Model.Resultado.MediaMovelQuinzenal.MediaMovelPassos4
             </td>
         </tr>
     </tbody>
@@ -119,8 +143,8 @@
 <table class="table table-bordered table-hover">
     <thead class="text-center">
         <tr>
-            <th colspan="2">
-                Média Móvel (Trimestral)
+            <th colspan="3">
+                Média móvel (trimestral)
             </th>
         </tr>
         <tr>
@@ -130,6 +154,9 @@
             <th>
                 @Html.DisplayName($"Peso")
             </th>
+            <th>
+                @Html.DisplayName($"Passos")
+            </th>
         </tr>
     </thead>
     <tbody>
@@ -138,7 +165,10 @@
                 Último trimestre
             </td>
             <td>
-                @Model.Resultado.MediaMovelTrimestral.MediaMovel1
+                @Model.Resultado.MediaMovelTrimestral.MediaMovelPeso1
+            </td>
+            <td>
+                @Model.Resultado.MediaMovelTrimestral.MediaMovelPassos1
             </td>
         </tr>
         <tr>
@@ -146,7 +176,10 @@
                Segundo trimestre mais antigo
             </td>
             <td>
-                @Model.Resultado.MediaMovelTrimestral.MediaMovel2
+                @Model.Resultado.MediaMovelTrimestral.MediaMovelPeso2
+            </td>
+            <td>
+                @Model.Resultado.MediaMovelTrimestral.MediaMovelPassos2
             </td>
         </tr>
         <tr>
@@ -154,7 +187,10 @@
                 Terceiro trimestre mais antigo
             </td>
             <td>
-                @Model.Resultado.MediaMovelTrimestral.MediaMovel3
+                @Model.Resultado.MediaMovelTrimestral.MediaMovelPeso3
+            </td>
+            <td>
+                @Model.Resultado.MediaMovelTrimestral.MediaMovelPassos3
             </td>
         </tr>
         <tr>
@@ -162,7 +198,10 @@
                 Quarto trimestre mais antigo
             </td>
             <td>
-                @Model.Resultado.MediaMovelTrimestral.MediaMovel4
+                @Model.Resultado.MediaMovelTrimestral.MediaMovelPeso4
+            </td>
+            <td>
+                @Model.Resultado.MediaMovelTrimestral.MediaMovelPassos4
             </td>
         </tr>
     </tbody>
@@ -171,7 +210,7 @@
 <table class="table table-bordered table-hover">
     <thead class="text-center">
         <tr>
-            <th colspan="2">
+            <th colspan="3">
                 Média dos últimos meses
             </th>
         </tr>
@@ -180,7 +219,10 @@
                 @Html.DisplayName("Mês/Ano")
             </th>
             <th>
-                @Html.DisplayName($"Média de Peso")
+                @Html.DisplayName($"Média de peso")
+            </th>
+            <th>
+                @Html.DisplayName($"Média de passos")
             </th>
         </tr>
     </thead>
@@ -194,6 +236,9 @@
                 <td scope="row">
                     @Html.DisplayFor(modelItem => item.MediaDePeso)
                 </td>
+                <td scope="row">
+                    @Html.DisplayFor(modelItem => item.MediaDePassos)
+                </td>
             </tr>
         }
     </tbody>
@@ -204,8 +249,8 @@
 <table class="table table-bordered table-hover">
     <thead class="text-center">
         <tr>
-            <th colspan="2">
-                Média de Peso Anual Histórica
+            <th colspan="3">
+                Média de peso anual histórica
             </th>
         </tr>
         <tr>
@@ -213,7 +258,10 @@
                 @Html.DisplayName("Referência")
             </th>
             <th>
-                @Html.DisplayName($"Média de Peso")
+                @Html.DisplayName($"Média de peso")
+            </th>
+            <th>
+                @Html.DisplayName($"Média de passos")
             </th>
         </tr>
     </thead>
@@ -226,6 +274,9 @@
                 </td>
                 <td scope="row">
                     @Html.DisplayFor(modelItem => item.Peso)
+                </td>
+                <td scope="row">
+                    @Html.DisplayFor(modelItem => item.Passos)
                 </td>
             </tr>
         }
