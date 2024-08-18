@@ -8,7 +8,7 @@ namespace ControleDePeso
     public class BancoDeDados
     {
         public string ConnectionString { get; set; } = "";
-        public BancoDeDados(IConfiguration config) => ConnectionString = config.GetConnectionString("DefaultConnection");
+        public BancoDeDados(IConfiguration config) => ConnectionString = config?.GetConnectionString("DefaultConnection") ?? "";
 
 
         public async Task<List<HistoricoDashBoardViewModel>> BuscarHistoricoAsync(int ultimosAno)
