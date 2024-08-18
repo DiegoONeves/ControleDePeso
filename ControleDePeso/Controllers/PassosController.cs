@@ -24,7 +24,7 @@ namespace ControleDePeso.Controllers
         public async Task<IActionResult> Gravar(GravarPassosViewModel model)
         {
             await _bd.GravarPassosAsync(model);
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Gravar", "Passos");
         }
     }
 }
